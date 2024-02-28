@@ -6,7 +6,7 @@ Conteúdo das aulas e exercícios propostos na matéria Laboratório de Banco de
 
 ### [PDF](./ANOTAÇÃO%201%20Projeto%20Modelo%20de%20Dados%20CURSO/PDF/Atividade%20-%20Revisao%20SQL%20Basico%20v2.pdf])
 
-## [ANOTAÇÃO 1 Projeto Modelo de Dados CURSO](https://github.com/Maicaoxd/Sistemas-Operacionais-I/tree/main/ExerciciosProcessos) 
+## [ANOTAÇÃO 1 Projeto Modelo de Dados CURSO](https://github.com/Maicaoxd/Lab-Banco-de-Dados/blob/main/ANOTA%C3%87%C3%83O%201%20Projeto%20Modelo%20de%20Dados%20CURSO/Script/Criacao%20de%20MODELO%20ALUNOS.sql) 
 
 
 ### 1.1 Desenho de Modelo de Dados Físico 

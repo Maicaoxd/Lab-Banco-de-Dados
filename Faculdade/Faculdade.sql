@@ -114,13 +114,44 @@ PRIMARY KEY (CodTit);
 
 ALTER TABLE Disciplina
 ADD CONSTRAINT fk_Discipli_Relation_Depto
-FOREIGN KEY (CodDepto) REFERENCES CodDepto(Depto);
+FOREIGN KEY (CodDepto) REFERENCES Depto (CodDepto);
 
 ALTER TABLE PreReq
 ADD CONSTRAINT fk_PreReq_Tem_Pre_Discipli
-FOREIGN KEY (CodDepto, NumDisc) REFERENCES CodDepto, NumDisc(Disciplina);
+FOREIGN KEY (CodDepto, NumDisc) REFERENCES Disciplina (CodDepto, NumDisc);
 
 ALTER TABLE PreReq
 ADD CONSTRAINT fk_PreReq_Eh_Pre_Discipli
-FOREIGN KEY (CodDeptoPreReq, NumDiscPreReq) REFERENCES CodDepto, NumDisc(Disciplina);
+FOREIGN KEY (CodDeptoPreReq, NumDiscPreReq) REFERENCES Disciplina (CodDepto, NumDisc);
 
+ALTER TABLE Turma
+ADD CONSTRAINT fk_Turma_Relation_Discipli
+FOREIGN KEY (CodDepto, NumDisc) REFERENCES Disciplina (CodDepto, NumDisc);
+
+ALTER TABLE Horario
+ADD CONSTRAINT fk_Horario_Relation_Turma
+FOREIGN KEY (AnoSem, CodDepto, NumDisc, SiglaTur) REFERENCES Turma (AnoSem, CodDepto, NumDisc, SiglaTur);
+
+ALTER TABLE Horario
+ADD CONSTRAINT fk_Horario_Relation_Sala
+FOREIGN KEY (CodPred, NumSala) REFERENCES Sala (CodPred, NumSala);
+
+ALTER TABLE Sala
+ADD CONSTRAINT fk_Sala_Relation_Predio
+FOREIGN KEY (CodPred) REFERENCES Predio (CodPred);
+
+ALTER TABLE Professor
+ADD CONSTRAINT fk_Professor_Relation_Depto
+FOREIGN KEY (CodDepto) REFERENCES Depto (CodDepto);
+
+ALTER TABLE Professor
+ADD CONSTRAINT fk_Professor_Relation_Titulacao
+FOREIGN KEY (CodTit) REFERENCES Titulacao (CodTit);
+
+ALTER TABLE ProfTurma
+ADD CONSTRAINT fk_ProfTurm_ProfTurma_Turma
+FOREIGN KEY (AnoSem, CodDepto, NumDisc, SiglaTur) REFERENCES Turma (AnoSem, CodDepto, NumDisc, SiglaTur);
+
+ALTER TABLE ProfTurma
+ADD CONSTRAINT fk_ProfTurm_ProfTurma_Professor
+FOREIGN KEY (CodProf) REFERENCES Professor (CodProf);

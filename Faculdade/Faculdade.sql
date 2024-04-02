@@ -155,3 +155,27 @@ FOREIGN KEY (AnoSem, CodDepto, NumDisc, SiglaTur) REFERENCES Turma (AnoSem, CodD
 ALTER TABLE ProfTurma
 ADD CONSTRAINT fk_ProfTurm_ProfTurma_Professor
 FOREIGN KEY (CodProf) REFERENCES Professor (CodProf);
+
+
+-- Criar Procedure , usando cursor explicito, para Selecionar a quantidade de disciplinas agrupadas por Departamento.
+
+
+
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE QTD()
+BEGIN
+	DECLARE qtdDisciplina int;
+	DECLARE done INT DEFAULT 0;
+	DECLARE C1 CURSOR FOR 
+            SELECT COUNT(NumDisc) FROM Disciplina
+            GROUP BY CodDepto;
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
+	OPEN C1;
+	WHILE done != 1 DO
+		FETCH c1 into qtdDisciplina;
+		SELECT qtdDisciplina;
+	END WHILE;
+	CLOSE c1;
+	END$$
+
+CALL QTD();

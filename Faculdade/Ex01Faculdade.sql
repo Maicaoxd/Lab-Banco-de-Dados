@@ -385,7 +385,7 @@ BEGIN
             ON PT.CodProf = P.CodProf
             
             WHERE T.NomeTit = 'Doutor' 
-            AND PT.AnoSem <> 20021;
+            AND NOT PT.AnoSem = 20021;
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
 
     OPEN C1;
